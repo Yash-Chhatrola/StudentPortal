@@ -78,7 +78,7 @@ namespace StudentPortal.web.Controllers
                 .FirstOrDefaultAsync(x => x.Id == viewModel.Id);
             if(student is not null)
             {
-                dbContext.Students.Remove(viewModel);
+                dbContext.Students.Remove(new Student { Id = viewModel.Id});
                 await dbContext.SaveChangesAsync();
             }
             return RedirectToAction("List", "Students");
